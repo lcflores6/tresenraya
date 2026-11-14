@@ -20,7 +20,7 @@
                 <img src="img/equis.jfif" alt="logo_equis" class=" img-fluid rounded-4" width="70">
             </div>
             <div class="col-8 text-start">
-                <input type="text" class="">
+                <input type="text" id="jugador1" placeholder="Jugador para la X">
             </div>
         </div>
         <div class="row align-items-center text-center">
@@ -28,85 +28,171 @@
                 <img src="img/CIRCULO.png" alt="logo_circulo" class=" img-fluid rounded-4" width="40">
             </div>
             <div class="col-8 text-start">
-                <input type="text" class="">
+                <input type="text" id="jugador2" placeholder="Jugador para el O">
             </div>
         </div>
         <div class="row my-4">
             <div class="col-12 align-items-center text-center">
-                <button type="button" class="rounded-pill"> Iniciar Juego </button>
+                <button type="button" id="BotonIniciar" onclick="iniciarJuego()" class="rounded-pill"> Iniciar Juego </button>
             </div>
         </div>
 
         <div class="row my-5 text-center align-items-center">
             <div class="col-12">
-                <div class="fs-3"> Turno: <span id="nombre_turno" class="fs-3"> Nombre</span></div>
+                <div class="fs-3"> Turno: <span id="nombre_turno" class="fs-3"> Nombre Jugador</span></div>
             </div>
         </div>
 
-        <div class="row align-items-center aling-middle justify-content-center">
-            <div class="col-8">
-                <table class="table-bordered img-fluid">
-                    <tbody>
-                        <tr>
-                            <td class="my-4 mx-4" id="c0">
-                                <img src="img/fondo.jfif" id="Imagen1" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                            <td class="my-4 mx-4" id="c1">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                            <td class="my-4 mx-4" id="c2">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="my-4 mx-4" id="c3">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                            <td class="my-4 mx-4" id="c4">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                            <td class="my-4 mx-4" id="c5">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="my-4 mx-4" id="c6">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                            <td class="my-4 mx-4" id="c7">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                            <td class="my-4 mx-4" id="c8">
-                                <img src="img/fondo.jfif" alt="imagen_de_fondo" class="img-fluid">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <div class="row justify-content-center">
+    <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+        <table class="table table-bordered text-center mb-0">
+            <tbody>
+                <tr>
+                    <td onclick="jugar(0,0)" class="p-0">
+                        <img src="img/fondo.jfif" id="img00" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                    <td onclick="jugar(0,1)" class="p-0">
+                        <img src="img/fondo.jfif" id="img01" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                    <td onclick="jugar(0,2)" class="p-0">
+                        <img src="img/fondo.jfif" id="img02" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="jugar(1,0)" class="p-0">
+                        <img src="img/fondo.jfif" id="img10" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                    <td onclick="jugar(1,1)" class="p-0">
+                        <img src="img/fondo.jfif" id="img11" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                    <td onclick="jugar(1,2)" class="p-0">
+                        <img src="img/fondo.jfif" id="img12" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                </tr>
+                <tr>
+                    <td onclick="jugar(2,0)" class="p-0">
+                        <img src="img/fondo.jfif" id="img20" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                    <td onclick="jugar(2,1)" class="p-0">
+                        <img src="img/fondo.jfif" id="img21" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                    <td onclick="jugar(2,2)" class="p-0">
+                        <img src="img/fondo.jfif" id="img22" alt="imagen_de_fondo" width="100" height="100">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
     </main>
-    <fotter>
+    <footer>
 
-    </fotter>
+    </footer>
     <script>
-        let ImagenO = true;
-        let turno = 1;
+        // Estado del juego
+        var juegoActivo = false;
+        var turno = 1;
+        var nombre1 = "";
+        var nombre2 = "";
+        var tablero = [
+            [0, 0, 0],
+            [0, 0, 0], 
+            [0, 0, 0]
+        ];
 
-        switch
+        // Inicar Juego
+        function iniciarJuego(){
+            nombre1 = document.getElementById("jugador1").value;
+            nombre2 = document.getElementById("jugador2").value;
 
-            function cambiarImagen() {
-                const imagen = document.getElementById("Imagen1");
-    
-                if (Imagen0) {
-                imagen.src = "foto2.jpg";
-                } else {
-                imagen.src = "foto1.jpg";
+            if(nombre1 == "" || nombre2 == ""){
+                alert("Ambos jugadores deben escribir su nombre.");
+                return;
+            }
+
+            for(var f = 0; f < 3; f++){
+                for(var c = 0; c < 3; c++){
+                    tablero[f][c] = 0;
+                    document.getElementById("img" + f + c).src = "img/fondo.jfif";
                 }
-    
-    // Invierte el estado para el próximo clic
-    esPrimeraImagen = !esPrimeraImagen;
-  }
+            }
+
+            turno = 1;
+            juegoActivo = true;
+            document.getElementById("nombre_turno").innerHTML = nombre1;
+        }
+
+        function jugar(fila, columna){
+            if(juegoActivo == false){
+                return;
+            }
+
+            if(tablero[fila][columna] != 0){
+                return;
+            }
+
+            tablero[fila][columna] = turno;
+
+            if(turno == 1){
+                document.getElementById("img" + fila + columna).src = "img/equis.jfif";
+            } else {
+                document.getElementById("img" + fila + columna).src = "img/CIRCULO.png";
+            }
+
+            if(Ganador() == true){
+                juegoActivo = false;
+                if(turno == 1){
+                    alert("¡Ganó " + nombre1 + "!");
+                } else {
+                    alert("¡Ganó " + nombre2 + "!");
+                }
+                return;
+            }
+
+            var vacias = 0;
+            for(var f = 0; f < 3; f++){
+                for(var c = 0; c < 3; c++){
+                    if(tablero[f][c] == 0){
+                        vacias = vacias + 1;
+                    }
+                }
+            }
+
+            if(vacias == 0){
+                juegoActivo = false;
+                alert("¡Empate!");
+                return;
+            }
+
+            if(turno == 1){
+                turno = 2;
+                document.getElementById("nombre_turno").innerHTML = nombre2;
+            } else {
+                turno = 1;
+                document.getElementById("nombre_turno").innerHTML = nombre1;
+            }
+        }
+
+        function Ganador(){
+            for(var i = 0; i < 3; i++){
+                if(tablero[i][0] == turno && tablero[i][1] == turno && tablero[i][2] == turno){
+                    return true;
+                }
+                if(tablero[0][i] == turno && tablero[1][i] == turno && tablero[2][i] == turno){
+                    return true;
+                }
+            }
+            
+            if(tablero[0][0] == turno && tablero[1][1] == turno && tablero[2][2] == turno){
+                return true;
+            }
+            if(tablero[0][2] == turno && tablero[1][1] == turno && tablero[2][0] == turno){
+                return true;
+            }
+            return false;
+        }
+
     </script>
 </body>
 </html>
