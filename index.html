@@ -8,35 +8,39 @@
 </head>
 <body class="container-fluid">
     <header>
+        <!--Título de la página web-->
         <div class="row align-items-center text-center">
             <div class="col-12 my-4">
-                <h1 class=" text-secondary fs-1"> Juego 3 en Línea</h1>
+                <h1 class=" text-warning fs-1"> Juego 3 en Línea</h1>
             </div>
         </div>
     </header>
     <main>
+        <!--Logo equis y su textbox al lado-->
         <div class="row align-items-center text-center">
             <div class="col-4">
-                <img src="img/equis.jfif" alt="logo_equis" class=" img-fluid rounded-4" width="70">
+                <img src="img/equis.jfif" alt="logo_equis" class=" img-fluid" width="70">
             </div>
             <div class="col-8 text-start">
-                <input type="text" id="jugador1" placeholder="Jugador para la X">
+                <input type="text" id="jugador1" placeholder="Jugador para la X" class="rounded-5">
             </div>
         </div>
+        <!--Logo círculo y su textbox al lado-->
         <div class="row align-items-center text-center">
             <div class="col-4">
-                <img src="img/CIRCULO.png" alt="logo_circulo" class=" img-fluid rounded-4" width="40">
+                <img src="img/CIRCULO.png" alt="logo_circulo" class="bg-info img-fluid" width="40">
             </div>
             <div class="col-8 text-start">
-                <input type="text" id="jugador2" placeholder="Jugador para el O">
+                <input type="text" id="jugador2" placeholder="Jugador para el O" class="rounded-5">
             </div>
         </div>
+        <!--Botón Iniciar Juego-->
         <div class="row my-4">
             <div class="col-12 align-items-center text-center">
-                <button type="button" id="BotonIniciar" onclick="iniciarJuego()" class="rounded-pill"> Iniciar Juego </button>
+                <button type="button" id="BotonIniciar" onclick="iniciarJuego()" class="rounded-pill bg-success bg-opacity-10 text-warning"> Iniciar Juego </button>
             </div>
         </div>
-
+        <!--Etiqueta Turno y su cambio de nombre según su turno-->
         <div class="row my-5 text-center align-items-center">
             <div class="col-12">
                 <div class="fs-3"> Turno: <span id="nombre_turno" class="fs-3"> Nombre Jugador</span></div>
@@ -44,50 +48,49 @@
         </div>
 
         <div class="row justify-content-center">
-    <div class="col-10 col-sm-8 col-md-6 col-lg-4">
-        <table class="table table-bordered text-center mb-0">
-            <tbody>
-                <tr>
-                    <td onclick="jugar(0,0)" class="p-0">
-                        <img src="img/fondo.jfif" id="img00" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                    <td onclick="jugar(0,1)" class="p-0">
-                        <img src="img/fondo.jfif" id="img01" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                    <td onclick="jugar(0,2)" class="p-0">
-                        <img src="img/fondo.jfif" id="img02" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                </tr>
-                <tr>
-                    <td onclick="jugar(1,0)" class="p-0">
-                        <img src="img/fondo.jfif" id="img10" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                    <td onclick="jugar(1,1)" class="p-0">
-                        <img src="img/fondo.jfif" id="img11" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                    <td onclick="jugar(1,2)" class="p-0">
-                        <img src="img/fondo.jfif" id="img12" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                </tr>
-                <tr>
-                    <td onclick="jugar(2,0)" class="p-0">
-                        <img src="img/fondo.jfif" id="img20" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                    <td onclick="jugar(2,1)" class="p-0">
-                        <img src="img/fondo.jfif" id="img21" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                    <td onclick="jugar(2,2)" class="p-0">
-                        <img src="img/fondo.jfif" id="img22" alt="imagen_de_fondo" width="100" height="100">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+                <table class="table table-bordered text-center mb-0">
+                    <tbody>
+                        <tr>
+                            <td onclick="jugar(0,0)" class="p-0">
+                                <img src="img/fondo.jfif" id="img00" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                            <td onclick="jugar(0,1)" class="p-0">
+                               <img src="img/fondo.jfif" id="img01" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                            <td onclick="jugar(0,2)" class="p-0">
+                                <img src="img/fondo.jfif" id="img02" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td onclick="jugar(1,0)" class="p-0">
+                                <img src="img/fondo.jfif" id="img10" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                            <td onclick="jugar(1,1)" class="p-0">
+                                <img src="img/fondo.jfif" id="img11" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                            <td onclick="jugar(1,2)" class="p-0">
+                                <img src="img/fondo.jfif" id="img12" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td onclick="jugar(2,0)" class="p-0">
+                                <img src="img/fondo.jfif" id="img20" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                            <td onclick="jugar(2,1)" class="p-0">
+                                <img src="img/fondo.jfif" id="img21" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                            <td onclick="jugar(2,2)" class="p-0">
+                                <img src="img/fondo.jfif" id="img22" alt="imagen_de_fondo" width="100" height="100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
     <footer>
-
+        
     </footer>
     <script>
         // Estado del juego
@@ -95,6 +98,7 @@
         var turno = 1;
         var nombre1 = "";
         var nombre2 = "";
+        var spanTurno = document.getElementById("nombre_turno");
         var tablero = [
             [0, 0, 0],
             [0, 0, 0], 
@@ -167,11 +171,13 @@
 
             if(turno == 1){
                 turno = 2;
-                document.getElementById("nombre_turno").innerHTML = nombre2;
+                spanTurno.innerHTML = nombre2;
             } else {
                 turno = 1;
-                document.getElementById("nombre_turno").innerHTML = nombre1;
+                spanTurno.innerHTML = nombre1;
             }
+            spanTurno.classList.remove("text-primary", "text-danger");
+            spanTurno.classList.add(turno == 1 ? "text-primary" : "text-danger");
         }
 
         function Ganador(){
